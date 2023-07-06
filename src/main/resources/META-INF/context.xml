@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Context logEffectiveWebXml="true" antiResourceLocking="false">
+
+    <CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor"
+
+                     sameSiteCookies="strict" />
+
+    <Valve className="org.apache.catalina.valves.AccessLogValve"
+           directory="logs"
+           fileDateFormat="yyyy-MM-dd.HH"
+           prefix="access_log"
+           suffix=".log"
+           pattern="%v %I %u %t %Z &quot;%r&quot; %s %b %{Apachename}r %D %{uniqueid}r %h %H cookie:%{SESSIONID}c request:%{SESSIONID}r %m %U %q %r" />
+    <!-- added the required information according to the tomcat log in isy-logging/konzept to the pattern-->
+    <!-- <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+
+           allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1|192\.168\.0\.\d+" />-->
+
+    <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+
+</Context>

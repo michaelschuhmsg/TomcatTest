@@ -53,6 +53,19 @@
         <finalName>${artifactId}</finalName>
         <plugins>
             <plugin>
+                <!-- usage of the maven war plugin in as the META-INF was not placed in the root of the classpath -->
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <!-- this is relative to the pom.xml directory -->
+                            <directory>src/main/resources/META-INF</directory>
+                            <targetPath>META-INF</targetPath>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
