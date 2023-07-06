@@ -2,11 +2,17 @@ package com.example.tomcat_artefact.entity;
 
 import java.io.IOException;
 import java.util.logging.Logger;
+
+import org.springframework.stereotype.Component;
+
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet("/test")
+@Component
 public class TestServletLogging extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(TestServletLogging.class.getName());
 
