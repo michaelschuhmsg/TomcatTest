@@ -9,10 +9,12 @@
 
     <Valve className="org.apache.catalina.valves.AccessLogValve"
            directory="logs"
-           fileDateFormat="yyyy-MM-dd.HH"
-           prefix="access_log"
+           prefix="access_log_%host%_%app%_"
            suffix=".log"
-           pattern="%v %I %u %t %Z &quot;%r&quot; %s %b %{Apachename}r %D %{uniqueid}r %h %H cookie:%{SESSIONID}c request:%{SESSIONID}r %m %U %q %r" />
+           rotatable="true"
+           fileDateFormat="yyyy-MM-dd_HH00"
+           pattern="%h %v %I %u %t %{yyyy-MM-dd'T'HH:mm:ssZ}t %H %r %s %b %D %\{APACHE}r %\{UNIQUE_ID}r cookie:%{SESSIONID}c request:%{SESSIONID}r %m %U %q"
+           resolveHosts="false" />
     <!-- added the required information according to the tomcat log in isy-logging/konzept to the pattern-->
     <!-- <Valve className="org.apache.catalina.valves.RemoteAddrValve"
 
